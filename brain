@@ -1,0 +1,162 @@
+#Универсальный Искусственный интеллект 
+
+
+import pyttsx3
+import datetime
+#import speech_recognition as sr
+import wikipedia
+import os
+import webbrowser
+
+
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
+
+
+#speak(words)  
+#print(voices[1].id)
+
+words = input("Введи что-нибудь:")  
+speaks = input("Давай поболтаем:")
+engine.setProperty('voice', voices[0].id)
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()    
+
+def wishMe():
+    hour = int(datetime.datetime.now().hour)
+    if hour>=0 and hour <12:
+        speak("Доброе утро, повелитель!!!")
+    elif  hour>=12 and hour<18:
+        speak("Добрый день, повелитель")
+    else:
+        speak("Доброго вечера, повелитель !!")
+    speak("Дементий готов к работе......")    
+def takeCommand():
+    r= sr.Recognizer
+    with sr.Microphone() as source:
+        print("Слушаю.....")
+        r.pause_threshold =1
+        audio  = r.listen(source)
+    try:
+        print("Говорите.....")
+        return None
+    return query    
+    except  :
+        pass 
+def command():
+    now = datetime.datetime.now()
+    if words =="/time":
+        print("Сейчас" +"-"+str(now.hour)+ ":"+str(now.minute))
+        speak("Сейчас" +str(now.hour)+ ":"+str(now.minute))
+    elif words =="/date":
+        print ("Текущий год: %d" % now.year)
+        print ("Текущий месяц: %d"% now.month)
+        print ("Текущий день: %d" % now.day)
+        speak("Текущий год:" +str(now.year) + "Текущий день:"+str(now.day)+"Текущий месяц:"+str(now.month))    
+    elif words =='/youtube':
+        speak("Выполняю")
+        webbrowser.open("youtube.com")
+    elif words =="/calk":
+        webbrowser.open("D:\\Python\\test.py")   
+    elif words =='/weather':
+        speak("Выполняю")
+        webbrowser.open("D:\\Python\\Tempurature.py")
+        webbrowser.open("https://www.gismeteo.ru/")    
+    elif words =="/stupid":
+        speak("Мой повелитель не научил меня шутить.....хахаха")  
+    elif words =="/music":
+        speak("Выполняю")
+        webbrowser.open("C:\\Users\\")
+    elif words =="/putin":
+        speak("Vladimir Vladimirovich Putin is a Russian statesman and former intelligence officer serving as President of Russia since 2012, previously holding the position from 2000 until 2008")
+        speak("He was Prime Minister of Russia from 1999 until the beginning of his first presidency in 2000, and again between presidencies from 2008 until 2012))")      
+    elif words == "/python":
+        webbrowser.open("C:\\Users\\Zigomoty\\AppData\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Python 3.7")
+    elif words == "/open vs":
+        webbrowser.open("C:\\Users\\Zigomoty\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Visual Studio Code")        
+    else:
+        print("Error")
+        speak("Проверь написанное ранее")  
+'''def health():
+    print("Добро пожаловать в специальную версию ИИ \'Дементий \', созданную для работ в Медицинских учреждениях") 
+    speak("Добро пожаловать в специальную версию ИИ \'Дементий \', созданную для работ в Медицинских учреждениях")
+    if words == "/tutMed":
+        speak("Сейчас пороюсь в закромах своих ...... нашел")
+        print("=====")
+        print("=====")
+        print("=====")
+        print("=====")
+        numbers = input("Выбери номер статьи:")
+        if numbers == 1:
+            print("")
+        elif numbers ==2:
+            print("")
+        elif numbers ==3:
+            print("")
+        elif numbers == 4:
+            print("")  
+        else:
+            speak("Проверь написанное....")
+            i = 10
+            while i <10:
+                i +=1
+                print("......")  
+    elif words == "/tutTech":
+        speak("Сейчас пороюсь в закромах своих ...... нашел")
+        print("")
+        print("")
+        print("")
+        print("")
+        numbers = input("Выбери номер статьи:")
+        if numbers == 1:
+            print("")
+        elif numbers ==2:
+            print("")
+        elif numbers ==3:
+            print("")
+        elif numbers == 4:
+            print("")  
+        else:
+            speak("Проверь написанное....")
+            i = 10
+            while i <10:
+                i +=1
+                print("......")  
+    else:
+        speak("Найдена ошибка .... Проверь написанное")            
+'''
+def speaking():
+    if speaks == "давай" or "да" or "ок":
+        speak("Выбери темы для разговора:") 
+        print("1)Религия")
+        print("2) Политика")
+        print("3) Образование")
+        numbers = int(input("Введите номер темы:"))
+        if numbers ==1:
+            print("===========")
+            speak("Я как представитель ИИ, и поэтому мне сложно говорить о такой теме, но все же))")
+            speak("Все же каждое явление поддается логическому объяснению, так и религия не исключение")
+            speak("Я все же думаю, что религия была создана с целью упрощения жизни человека, контроля его жизни, создание тех правил на которые оприаются все люди планеты Земля")
+        elif numbers ==2:
+            print("===========")
+            speak("Политико-правовая доктрина Платона была нацелена на то, чтобы законсервировать полис как форму государственного устройства, сохранить его экономическую независимость, или самодостаточность, предотвратить территориальное расширение государства. Изложенные в диалогах мыслителя социально-политические программы являлись с этой точки зрения консервативными.")
+            speak("Механизму осуществления власти (ее устройству, роли закона) Платон не придавал в диалоге Государство особого значения. В частности, по поводу формы правления в образцовом государстве сказано лишь то, что оно может быть либо монархией, если править будет один философ, либо аристократией, если правителей будет несколько. Основное внимание здесь уделяется проблемам воспитания и образа жизни граждан.")
+        elif numbers ==3:
+            speak("говно")
+        else:
+            speak("Я обнаружил ошибку, пожалуйста проверь, что написал выше))")       
+    elif  speaks == "нет" or "no":
+
+        speak("Ну и пошел ты , я пошел бухать))")  
+
+if __name__=="__main__":
+    wishMe()
+    while True:
+        query = takeCommand().lower()
+
+        #Команды сверху 
+    command()
+    speaking()
+
